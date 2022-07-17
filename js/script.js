@@ -53,10 +53,8 @@ restart_quiz.onclick = () => {
   showQuestions(que_count);
   queCounter(que_numb);
 
-  clearInterval(counter);
   startTimer(timeValue);
 
-  clearInterval(counterLine);
   startTimerLine(widthValue);
   next_btn.style.display = "none";
 };
@@ -74,17 +72,12 @@ next_btn.onclick = () => {
     showQuestions(que_count);
     queCounter(que_numb);
 
-    clearInterval(counter);
     startTimer(timeValue);
 
-    clearInterval(counterLine);
     startTimerLine(widthValue);
     next_btn.style.display = "none";
     timeOff.textContent = "Time left";
-    clearInterval(counter);
-    clearInterval(counterLine);
   } else {
-    // console.log("done");
     showResultBox();
   }
 };
@@ -121,14 +114,11 @@ function optionSelected(answer) {
 
   if (userAns === correctAns) {
     userScore++;
-    // console.log(userScore);
     answer.classList.add("correct");
-    // console.log("correct");
     answer.insertAdjacentHTML("beforeend", tickIcon);
   } else {
     answer.classList.add("incorrect");
     answer.insertAdjacentHTML("beforeend", crossIcon);
-    // console.log("wrong");
 
     // if answer is incorrect then automatically select the correct answer
     for (let i = 0; i < allOptions; i++) {
@@ -164,7 +154,7 @@ function showResultBox() {
 }
 
 function startTimer(time) {
-  counter = setInterval(timer, 1000);
+  timeCount.textContent = time;
   function timer() {
     timeCount.textContent = time;
     time--;
@@ -193,6 +183,8 @@ function startTimer(time) {
       next_btn.style.display = "block";
     }
   }
+
+  counter = setInterval(timer, 1000);
 }
 
 function startTimerLine(time) {

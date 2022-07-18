@@ -142,13 +142,13 @@ function showResultBox() {
   result_box.classList.add("activeResult"); // show quiz box
   const scoreText = result_box.querySelector(".score_text");
   if (userScore > 3) {
-    let scoreTag = `<span>and congrats! &#128513; You got <p>${userScore}</p>out of<p>${questions.length}</p></span>`;
+    let scoreTag = `<p>and congrats! &#128513; You got <span>${userScore}</span>out of<span>${questions.length}</span></p>`;
     scoreText.innerHTML = scoreTag;
   } else if (userScore > 1) {
-    let scoreTag = `<span>and nice 	&#128515; You got <p>${userScore}</p>out of<p>${questions.length}</p></span>`;
+    let scoreTag = `<p>and nice 	&#128515; You got <span>${userScore}</span>out of<span>${questions.length}</span></p>`;
     scoreText.innerHTML = scoreTag;
   } else {
-    let scoreTag = `<span>and sorry &#128542; You got only<p>${userScore}</p>out of<p>${questions.length}</p></span>`;
+    let scoreTag = `<p>and sorry &#128542; You got only<span>${userScore}</span>out of<span>${questions.length}</span></p>`;
     scoreText.innerHTML = scoreTag;
   }
 }
@@ -188,9 +188,10 @@ function startTimer(time) {
 }
 
 function startTimerLine(time) {
+  timeLine.style.width = "0%";
   counterLine = setInterval(timer, 1000);
   function timer() {
-    time += 6.6;
+    time += 6.25;
     timeLine.style.width = time + "%";
     if (time > 100) {
       clearInterval(counterLine);
@@ -200,6 +201,6 @@ function startTimerLine(time) {
 
 function queCounter(index) {
   const button_ques_counter = quiz_box.querySelector(".total_que");
-  let totalQuesCountTag = `<span><p>${index}</p>of<p>${questions.length}</p>Questions</span>`;
+  let totalQuesCountTag = `<span><p>${index}</p>of<p>${questions.length}</p>Q</span>`;
   button_ques_counter.innerHTML = totalQuesCountTag;
 }

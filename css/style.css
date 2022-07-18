@@ -40,18 +40,65 @@ main {
   transform: translate(-50%, -50%) scale(1);
   transition: all 0.3s ease;
 }
-
+/* ------------------- */
 /* Quiz button styling */
+/* ------------------- */
+
+.start_btn {
+  box-shadow: none;
+}
+
 .start_btn button {
-  font-size: 1.8em;
+  position: relative;
+  font-size: 1.6em;
   font-weight: 500;
-  color: var(--blue);
-  padding: 0.5em 1.2em;
+  color: var(--white);
+  text-transform: uppercase;
+  padding: 0.5em 1.5em;
   border: none;
   border-radius: 5px;
-  background: var(--white);
+  background: transparent;
   cursor: pointer;
+  box-shadow: none;
 }
+
+.start_btn button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+  transition: 0.3s;
+}
+
+.start_btn button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  border-bottom: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  transition: 0.3s;
+}
+
+.start_btn button:hover::after,
+.start_btn button:hover::before {
+  width: 98%;
+  height: 97%;
+}
+
+.start_btn button:active {
+  font-size: 1.4em;
+}
+
+/* ------------------- */
+/* Rules Box Styling */
+/* ------------------- */
 
 .info_box {
   background-color: var(--white);
@@ -122,6 +169,10 @@ main {
   background: var(--blue);
 }
 
+/* ------------------- */
+/* Main Quiz Box styling */
+/* ------------------- */
+
 .quiz_box {
   width: 40%;
   background: var(--white);
@@ -156,8 +207,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* width: 145px;
-  height: 45px; */
   background-color: #cce5ff;
   border: 1px solid #b8daff;
   border-radius: 5px;
@@ -176,11 +225,8 @@ main {
   padding: 0 0.1em 0 0.05em;
   font-weight: 500;
   background-color: #343a40;
-  /* height: 30px;
-  width: 45px; */
   color: var(--white);
   text-align: center;
-  /* line-height: 30px; */
   border-radius: 5px;
   border: 1px solid #343a40;
   user-select: none;
@@ -233,15 +279,11 @@ section .option_list .option {
 }
 
 .option_list .option .icon {
-  /* height: 26px;
-  width: 26px; */
+  height: 1.5em;
+  width: 1.5em;
   border: 2px solid transparent;
   border-radius: 50%;
-  /* text-align: center;
-  font-size: 15px;
-  line-height: 24px; */
   pointer-events: none;
-  padding: 0.2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,8 +318,6 @@ section .option_list .option {
 }
 
 .quiz_box footer {
-  /* height: 60px;
-  width: 100%; */
   padding: 1em 2em;
   display: flex;
   align-items: center;
@@ -299,8 +339,6 @@ footer .total_que span p {
 }
 
 footer .next_btn {
-  /* display: none;
-  height: 40px; */
   padding: 0.4em 1em;
   font-size: 1.1em;
   font-weight: 400;
@@ -316,6 +354,10 @@ footer .next_btn {
 footer .next_btn:hover {
   background-color: #0263ca;
 }
+
+/* ------------------------ */
+/* Final Score card styling */
+/* ------------------------ */
 
 .result_box {
   background-color: var(--white);
@@ -343,33 +385,213 @@ footer .next_btn:hover {
   font-weight: 500;
 }
 
-.result_box .score_text span {
-  display: flex;
+.result_box .score_text p {
   margin: 0.4em 0;
   font-size: 1em;
-  font-weight: 500;
 }
 
-.score_text span p {
+.score_text p span {
   font-weight: 600;
   padding: 0 0.3em;
   color: var(--blue);
 }
 
 .result_box .buttons {
-  display: flex;
   margin: 1.3rem 0;
-  width: 80%;
+  width: 100%;
   justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
 }
 
 .result_box .buttons button {
-  padding: 0.4em 1.2em;
+  padding: 0.3em 1.1em;
+  margin-bottom: 2px;
   border: none;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 500;
   border-radius: 5px;
   border: 1px solid var(--blue);
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+/* ---------------------- */
+/* Applying media queries */
+/* ---------------------- */
+
+/* For mediam size screen devices (768px to 1080px) */
+@media only screen and (max-width: 1080px) {
+  section .que_text {
+    font-size: 1.3em;
+  }
+
+  section .option_list .option {
+    font-size: 1em;
+  }
+
+  .option_list .option .icon {
+    height: 1.4em;
+    width: 1.4em;
+  }
+
+  .result_box .complete_test {
+    font-size: 1em;
+  }
+
+  .result_box .score_text p {
+    font-size: 0.8em;
+  }
+
+  .result_box .buttons button {
+    padding: 0.2em 1em;
+    font-size: 0.9em;
+  }
+}
+
+/* For mediam size screen devices (595px to 768px) */
+@media only screen and (max-width: 768px) {
+  /* start button */
+  .start_btn button {
+    font-size: 1.3em;
+  }
+
+  /* rules box */
+
+  .info_box .info_title {
+    font-size: 1.1em;
+  }
+  .info_list .info {
+    font-size: 1em;
+  }
+
+  .info_box .buttons button {
+    font-size: 0.9em;
+  }
+
+  /* questions box */
+  .quiz_box header .title {
+    font-size: 1.1em;
+  }
+
+  .timer {
+    padding: 0.3em;
+  }
+
+  .timer .time_text {
+    font-size: 1em;
+  }
+
+  .timer .timer_sec {
+    font-size: 1em;
+    padding: 0.6em 0.1em 0.6em 0.05em;
+  }
+
+  section .que_text {
+    font-size: 1.3em;
+  }
+
+  section .option_list .option {
+    font-size: 1em;
+  }
+
+  .option_list .option .icon {
+    padding: 0.2em;
+    font-size: 0.8em;
+  }
+
+  .quiz_box footer .total_que span {
+    font-size: 0.9em;
+  }
+  footer .next_btn {
+    font-size: 1em;
+  }
+
+  /* result box */
+  .result_box .icon {
+    font-size: 5em;
+  }
+}
+/* For extremely small screen devices (595px and below) */
+@media only screen and (max-width: 595px) {
+  .start_btn button {
+    font-size: 1.1em;
+  }
+
+  .start_btn button:active {
+    font-size: 0.9em;
+  }
+
+  .info_box .info_title {
+    font-size: 1em;
+  }
+
+  .info_list .info {
+    font-size: 0.9em;
+  }
+
+  .info_box .buttons button {
+    font-size: 0.8em;
+  }
+
+  /* question box */
+  .quiz_box header .title {
+    font-size: 0.8em;
+    margin-right: 3px;
+  }
+
+  .timer {
+    padding: 0em;
+  }
+
+  .timer .time_text {
+    font-size: 0.6em;
+  }
+
+  .timer .timer_sec {
+    font-size: 0.6em;
+    padding: 0.6em 0.1em 0.6em 0.05em;
+  }
+
+  .quiz_box section {
+    padding: 1.3em 1.4em 0em 1.4em;
+  }
+  section .option_list {
+    padding-bottom: 0;
+  }
+
+  section .que_text {
+    font-size: 1em;
+  }
+
+  section .option_list .option {
+    font-size: 0.8em;
+  }
+
+  .quiz_box footer .total_que span {
+    font-size: 0.7em;
+    margin-right: 3px;
+  }
+
+  footer .next_btn {
+    font-size: 0.7em;
+    padding: 0.2em 0.8em;
+  }
+
+  /* result box */
+  .result_box .complete_test {
+    font-size: 0.9em;
+  }
+
+  .result_box .score_text p {
+    font-size: 0.7em;
+  }
+
+  .result_box .icon {
+    font-size: 4em;
+  }
+
+  .result_box .buttons button {
+    font-size: 0.7em;
+  }
 }

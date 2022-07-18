@@ -188,11 +188,11 @@ function startTimer(time) {
 }
 
 function startTimerLine(time) {
-  counterLine = setInterval(timer, 29);
+  counterLine = setInterval(timer, 1000);
   function timer() {
-    time += 1;
-    timeLine.style.width = time + "px";
-    if (time > 549) {
+    time += 6.6;
+    timeLine.style.width = time + "%";
+    if (time > 100) {
       clearInterval(counterLine);
     }
   }
